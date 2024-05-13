@@ -1,0 +1,72 @@
+
+
+
+
+class Vehicle {
+    protected String brand;
+    protected String model;
+    protected int year;
+    protected double rentalPrice;
+
+    public Vehicle(String brand, String model, int year, double rentalPrice) {
+        this.brand = brand;
+        this.model = model;
+        this.year = year;
+        this.rentalPrice = rentalPrice;
+    }
+
+    public void displayInfo() {
+        System.out.println("Brand: " + brand);
+        System.out.println("Model: " + model);
+        System.out.println("Year: " + year);
+        System.out.println("Rental Price: $" + rentalPrice);
+    }
+}
+
+class Car extends Vehicle {
+    private int numberOfSeats;
+
+    public Car(String brand, String model, int year, double rentalPrice, int numberOfSeats) {
+        super(brand, model, year, rentalPrice);
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    // Method to retrieve the number of seats
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+}
+
+// Child class Motorcycle extending Vehicle
+class Motorcycle extends Vehicle {
+    // Additional attribute
+    private int engineCapacity;
+
+    public Motorcycle(String brand, String model, int year, double rentalPrice, int engineCapacity) {
+        super(brand, model, year, rentalPrice);
+        this.engineCapacity = engineCapacity;
+    }
+
+    public int getEngineCapacity() {
+        return engineCapacity;
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // Creating instances of Car and Motorcycle
+        Car car = new Car("Toyota", "Camry", 2020, 50.0, 5);
+        Motorcycle motorcycle = new Motorcycle("Honda", "CBR500R", 2021, 30.0, 500);
+
+        // Displaying information of each vehicle
+        System.out.println("Car Information:");
+        car.displayInfo();
+        System.out.println("Number of Seats: " + car.getNumberOfSeats());
+        System.out.println();
+
+        System.out.println("Motorcycle Information:");
+        motorcycle.displayInfo();
+        System.out.println("Engine Capacity: " + motorcycle.getEngineCapacity() + "cc");
+    }
+}
