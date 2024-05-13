@@ -1,0 +1,18 @@
+ public class Main {
+    public static void main(String[] args) {
+       // System.out.println("Hello World, Java ji");
+       int variable=42;
+       double varia=3.14159;
+       char variabl= 'A';
+       boolean variab=true;
+       String vari="Hello,SkillCaptain!";
+      
+       System.out.print(" Integer Variable: "  +  variable);
+       System.out.print(" Double Variable:   "+  variable);
+       System.out.print(" Character Variable:"   +  variable);
+     System.out.print(" Boolean Variable: " +  variable);
+     System.out.print(" String Variable: "  +  variable);
+
+
+    }
+}
