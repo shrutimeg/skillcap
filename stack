@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Main {
+    public static boolean isValid(String s) {
+        Stack<Integer> leftIndices = new Stack<>();
+        Stack<Integer> starIndices = new Stack<>();
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '(') {
+                leftIndices.push(i);
+            } else if (c == '*') {
+                starIndices.push(i);
+            } else {
+                if (!leftIndices.isEmpty()) {
+                    leftIndices.pop();
+                } else if (!starIndices.isEmpty()) {
+                    starIndices.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        while (!leftIndices.isEmpty() && !starIndices.isEmpty()) {
+            if (leftIndices.pop() > starIndices.pop()) {
+                return false;
+            }
+        }
+
+        return leftIndices.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        String[] tests = {"()", "(*)", "(*))"};
+        for (String test : tests) {
+            System.out.println("Input: " + test);
+            System.out.println("Output: " + isValid(test));
+            System.out.println();
+        }
+    }
+}
