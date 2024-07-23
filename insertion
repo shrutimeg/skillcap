@@ -1,0 +1,51 @@
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
+
+public class Main {
+    
+    public ListNode insertionSortList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        
+        ListNode sortedHead = new ListNode(0);  
+        ListNode current = head;  
+        
+        while (current != null) {
+            ListNode prev = sortedHead;  
+            while (prev.next != null && prev.next.val < current.val) {
+                prev = prev.next;
+            }
+            ListNode next = current.next;  
+            current.next = prev.next;
+            prev.next = current;
+            current = next;
+        }
+        
+        return sortedHead.next;
+    }
+    
+    public static void main(String[] args) {
+        // Test the insertion sort list
+        ListNode head = new ListNode(4);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(1);
+        head.next.next.next = new ListNode(3);
+        
+        Main sortList = new Main();
+        ListNode sortedHead = sortList.insertionSortList(head);
+        
+        // Print sorted linked list
+        ListNode current = sortedHead;
+        while (current != null) {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+    }
+}
