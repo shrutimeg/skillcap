@@ -1,0 +1,45 @@
+import java.util.Random;
+
+class Runner implements Runnable {
+    private static final int FINISH_LINE = 100;
+    private static volatile boolean raceOver = false;  // Volatile to ensure visibility across threads
+    private String name;
+    private int distanceCovered = 0;
+    private Random random = new Random();
+
+    public Runner(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void run() {
+        while (!raceOver) {
+            distanceCovered += random.nextInt(10) + 1; // Randomly increment distance by 1 to 10 units
+            System.out.println(name + " has covered " + distanceCovered + " units.");
+
+            if (distanceCovered >= FINISH_LINE && !raceOver) {
+                raceOver = true;
+                System.out.println(name + " has won the race!");
+            }
+
+            try {
+                Thread.sleep(1000); // Pause for a while to simulate time taken for progress
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println(name + " was interrupted.");
+            }
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread runner1 = new Thread(new Runner("Runner 1"));
+        Thread runner2 = new Thread(new Runner("Runner 2"));
+        Thread runner3 = new Thread(new Runner("Runner 3"));
+
+        runner1.start();
+        runner2.start();
+        runner3.start();
+    }
+}
