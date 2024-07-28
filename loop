@@ -5,7 +5,7 @@ public class Main {
         for (int i = 1; i <= 10; i++) {
             System.out.print(i + " ");
         }
-        System.out.println(); // New line for formatting
+        System.out.println(); 
 
         // 2. WHILE loop to print even numbers between 1 and 20 (inclusive) in ascending order
         System.out.println("WHILE loop output:");
@@ -16,10 +16,10 @@ public class Main {
             }
             number++;
         }
-        System.out.println(); // New line for formatting
+        System.out.println();
 
         // 3. DO-WHILE loop to validate a number within the range of 1 to 10
-        int userNumber = 3; // Predefined variable, assuming 3 is the input value
+        int userNumber = 3; 
         boolean isValid = false;
 
         do {
@@ -27,7 +27,6 @@ public class Main {
                 isValid = true;
             } else {
                 System.out.println("Invalid number, please enter a number between 1 and 10.");
-                // In a real scenario, you would prompt the user to enter a new number here
             }
         } while (!isValid);
 
