@@ -1,0 +1,36 @@
+public class Main {
+    public static void main(String[] args) {
+        // 1. FOR loop to print numbers from 1 to 10 in ascending order
+        System.out.println("FOR loop output:");
+        for (int i = 1; i <= 10; i++) {
+            System.out.print(i + " ");
+        }
+        System.out.println(); // New line for formatting
+
+        // 2. WHILE loop to print even numbers between 1 and 20 (inclusive) in ascending order
+        System.out.println("WHILE loop output:");
+        int number = 1;
+        while (number <= 20) {
+            if (number % 2 == 0) {
+                System.out.print(number + " ");
+            }
+            number++;
+        }
+        System.out.println(); // New line for formatting
+
+        // 3. DO-WHILE loop to validate a number within the range of 1 to 10
+        int userNumber = 3; // Predefined variable, assuming 3 is the input value
+        boolean isValid = false;
+
+        do {
+            if (userNumber >= 1 && userNumber <= 10) {
+                isValid = true;
+            } else {
+                System.out.println("Invalid number, please enter a number between 1 and 10.");
+                // In a real scenario, you would prompt the user to enter a new number here
+            }
+        } while (!isValid);
+
+        System.out.println("You entered " + userNumber + ".");
+    }
+}
