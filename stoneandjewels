@@ -1,0 +1,24 @@
+import java.util.HashSet;
+import java.util.Set;
+
+public class Main {
+    public static int numJewelsInStones(String J, String S) {
+         Set<Character> Jset = new HashSet<>();
+         for (char j : J.toCharArray()) {
+             Jset.add(j);
+         }
+         int ans = 0;
+         for (char s : S.toCharArray()) {
+            if (Jset.contains(s)) {
+               ans++;
+            }
+        }
+         return ans;
+    }
+
+    public static void main(String[] args) {
+        String jewels = "aA";
+        String stones = "aAAbbbb";
+        System.out.println(numJewelsInStones(jewels, stones));  
+    }
+}
