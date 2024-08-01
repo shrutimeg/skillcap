@@ -1,0 +1,31 @@
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+public class Main {
+    public static String destCity(List<List<String>> paths) {
+        Set<String> hasOutgoing = new HashSet<>();
+        
+         for (List<String> path : paths) {
+             hasOutgoing.add(path.get(0));
+         }
+        
+         for (List<String> path : paths) {
+             String candidate = path.get(1);
+            if (!hasOutgoing.contains(candidate)) {
+                 return candidate;
+             }
+         }
+        
+         return "";
+    }
+
+    public static void main(String[] args) {
+        List<List<String>> paths = List.of(
+            List.of("London", "New York"),
+            List.of("New York", "Lima"),
+            List.of("Lima", "Sao Paulo")
+        );
+        System.out.println(destCity(paths));  
+    }
+}
