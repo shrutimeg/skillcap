@@ -1,0 +1,24 @@
+public class Main {
+    public double binaryExp(double x, int n) {
+         if (n == 0)
+             return 1;
+         if (n < 0)
+             return 1 / binaryExp(x, -n);
+         if (n % 2 == 1)
+             return x * binaryExp(x * x, (n - 1) / 2);
+         else
+             return binaryExp(x * x, n / 2);
+    }
+
+    public double myPow(double x, int n) {
+         return binaryExp(x, n);
+    }
+
+    public static void main(String[] args) {
+        Main solution = new Main();
+        double x = 2.00000;
+        int n = 10;
+        double result = solution.myPow(x, n);
+        System.out.println("Output: " + result);
+    }
+}
