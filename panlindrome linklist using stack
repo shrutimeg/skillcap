@@ -1,0 +1,41 @@
+import java.util.*;
+public class Main{
+   static class ListNode{
+        int data;
+        ListNode next;
+        ListNode(int data){
+            this.data=data;
+        }
+        
+    }
+    static  boolean ispalindrome(ListNode head){
+        ListNode currentnode = head;
+        Stack<Integer> s= new Stack<>();
+        while(currentnode!=null){
+            s.push(currentnode.data);
+            currentnode = currentnode.next;
+        }
+        while(head!=null){
+            int a = s.pop();
+            if(head.data!=a){
+                return false;
+            }
+            head= head.next;
+        }
+    
+        return true;
+    }
+        public static void main(String [] args){
+            ListNode head = new ListNode(1);
+            head.next = new ListNode(2);
+             head.next.next = new ListNode(1);
+            boolean result = ispalindrome(head);
+            if(result){
+                System.out.println("true");
+            }
+            else{
+                System.out.println("false");
+            }
+        
+    }
+}
