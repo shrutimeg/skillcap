@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Main {
+
+    static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int val) { this.val = val; }
+    }
+
+    public static void main(String[] args) {
+        ListNode head = new ListNode(2);
+        head.next = new ListNode(1);
+        head.next.next = new ListNode(5);
+
+        int[] result = nextLargerNodes(head);
+
+        System.out.println(Arrays.toString(result));  
+    }
+
+    public static int[] nextLargerNodes(ListNode head) {
+         List<Integer> values = new ArrayList<>();
+         ListNode current = head;
+         while (current != null) {
+            values.add(current.val);
+            current = current.next;
+        }
+
+         int n = values.size();
+         int[] answer = new int[n];
+         Deque<Integer> stack = new ArrayDeque<>();
+
+         for (int i = 0; i < n; i++) {
+             while (!stack.isEmpty() && values.get(stack.peek()) < values.get(i)) {
+                answer[stack.pop()] = values.get(i); 
+            }
+            stack.push(i);  
+         }
+
+     return answer;
+    }
+}
