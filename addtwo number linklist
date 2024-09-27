@@ -1,0 +1,79 @@
+import java.util.*;
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; }
+}
+
+public class Main {
+    static ListNode arrayToList(int[] arr) {
+         ListNode head = new ListNode(arr[0]);
+        ListNode current = head;
+         for (int i = 1; i < arr.length; i++) {
+             current.next = new ListNode(arr[i]);
+             current = current.next;
+         }
+         return head;
+    }
+
+    static void printList(ListNode node) {
+         while (node != null) {
+             System.out.print(node.val);
+            if (node.next != null) System.out.print(" -> ");
+             node = node.next;
+         }
+         System.out.println();
+    }
+
+    static class Solution {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+             ListNode dummyHead = new ListNode(0);
+             ListNode curr = dummyHead;
+             int carry = 0;
+
+             while (l1 != null || l2 != null || carry != 0) {
+                 int num1=0,num2=0;
+                 if(l1!=null){
+                     num1=l1.val;
+                 }
+                 if(l2!=null){
+                     num2=l2.val;
+                 }
+            //     int x = (l1 != null) ? l1.val : 0;
+            //     int y = (l2 != null) ? l2.val : 0;
+             int sum =  num1 + num2+ carry;
+              carry = sum / 10;
+              curr.next = new ListNode(sum % 10);
+              curr = curr.next;
+
+if(l1!=null){
+    l1=l1.next;
+}
+if(l2!=null){
+    l2=l2.next;
+}
+ }           //     if (l1 != null) l1 = l1.next;
+            //     if (l2 != null) l2 = l2.next;
+            // }
+
+            // return dummyHead.next;
+                
+   // }
+                 return dummyHead.next;
+}
+}
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+
+        int[] l1Arr = {2, 4, 3};
+        int[] l2Arr = {5, 6, 4};
+
+        ListNode l1 = arrayToList(l1Arr);
+        ListNode l2 = arrayToList(l2Arr);
+
+        ListNode result = solution.addTwoNumbers(l1, l2);
+
+        printList(result); 
+    }
+}
