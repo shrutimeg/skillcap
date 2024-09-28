@@ -1,0 +1,49 @@
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int val) {
+        this.val = val;
+        this.next = null;
+    }
+}
+
+public class Main {
+
+    public ListNode swapPairs(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+         ListNode firstNode = head;
+         ListNode secondNode = head.next;
+
+        firstNode.next = swapPairs(secondNode.next);
+
+         secondNode.next = firstNode;
+
+         return secondNode;
+    }
+
+    public void printList(ListNode head) {
+        ListNode curr = head;
+        while (curr != null) {
+            System.out.print(curr.val + " ");
+            curr = curr.next;
+        }
+        System.out.println();
+    }
+
+
+    public static void main(String[] args) {
+        
+        ListNode head = new ListNode(1);
+        head.next = new ListNode(2);
+        head.next.next = new ListNode(3);
+        head.next.next.next = new ListNode(4);
+
+        Main solution = new Main();
+        ListNode swappedHead = solution.swapPairs(head);
+        solution.printList(swappedHead);  
+    }
+}
