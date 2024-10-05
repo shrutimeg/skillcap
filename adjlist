@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+
+public class Main {
+    public static void main(String[] args) {
+        String[] rooms = {"Living Room", "Bedroom", "Kitchen", "Guest Room"};
+        String[][] edges = { {"Living Room", "Bedroom"}, {"Living Room", "Kitchen"}, {"Living Room", "Guest Room"}, {"Kitchen", "Guest Room"} };
+        //undirected graph
+        Map<String, List<String>> adjList = new HashMap<>();
+        
+        for(String room : rooms){
+            adjList.put(room, new ArrayList<>());
+        }
+
+        for (String[] edge: edges) {
+            List<String> adjNodes = adjList.get(edge[0]);
+            adjNodes.add(edge[1]); 
+            adjList.put(edge[0], adjNodes); 
+            
+            List<String> adjNodes1 = adjList.get(edge[1]); 
+            adjNodes1.add(edge[0]); 
+            adjList.put(edge[1], adjNodes1); 
+        }
+
+        for (String room: rooms) {
+            System.out.println("For the room: " + room + " adjacency rooms are: " + adjList.get(room));
+        }
+    }
+}
